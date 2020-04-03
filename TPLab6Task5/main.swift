@@ -18,17 +18,22 @@ func processString(text: String){
         table[ind] += 1
         tableCount.updateValue(table[ind], forKey: Character(UnicodeScalar(code)))
     }
-    print(tableCount)
     let sortedDict = tableCount.sorted { $0.1 < $1.1 }
-    for (index, keyValue) in sortedDict {
-        print("Letter:  \(index) - Count:  \(keyValue)")
+    for (symb, keyValue) in sortedDict {
+        if(symb == " "){
+            print("Symbol:  Space - Count:  \(keyValue)")
+            
+        }
+        else {
+            print("Symbol:  \(symb) - Count:  \(keyValue)")
+        }
     }
 }
 
 func main(){
-    print("Hello, World!")
-    processString(text: "abca abcd")
-    
+    print("Enter your string")
+    let str = readLine();
+    processString(text: str!)
 }
 
 main()
